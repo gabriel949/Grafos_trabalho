@@ -13,13 +13,14 @@ namespace grafo
 
         static void Main(string[] args)
         {
-            int vertice = 0, vertice1;
+            int vertice = 0;
 
 
             Console.SetWindowSize(Console.WindowWidth + 45, Console.WindowHeight + 10);
 
-            while (vertice == 0)
+            while (vertice <= 0)
             {
+                Console.Clear();
                 try
                 {
                     Console.Write("Digite o número de vértices : ");
@@ -31,6 +32,11 @@ namespace grafo
                     Console.WriteLine("\n\nDigite uma opção válida!!");
                     Console.ReadKey();
                     Console.Clear();
+                }
+                if (vertice <= 0)
+                {
+                    Console.WriteLine("Não existe grafo com 0 vértices ou com um número menor que 0 de vértices!!");
+                    Console.ReadKey();
                 }
             }
 
@@ -89,26 +95,22 @@ namespace grafo
                         Console.WriteLine(" Digite as cidades que serão adjacentes entre sí: ");
                         Console.WriteLine(" ================================================");
 
-                        //                        try
-                        // {
-                        Console.Write("\n\n Vertice 1 : ");
-                        vertice1 = int.Parse(Console.ReadLine());
-                        //  }
-                        // catch (System.FormatException)
-                        // {
-                        Console.WriteLine("Digite um vértice existente!!");
-                        // }
-                        //try { 
-                        Console.Write("\n\n Vertice 2 : ");
-                        int vertice2 = int.Parse(Console.ReadLine());
+                        try
+                        {
+                            Console.Write("\n\n Vertice 1 : ");
+                            int vertice1 = int.Parse(Console.ReadLine());
 
-                        //  }
+                            Console.Write("\n\n Vertice 2 : ");
+                            int vertice2 = int.Parse(Console.ReadLine());
 
-                        //  catch (System.FormatException)
-                        //{
-                        Console.WriteLine("Digite um vértice existente!!");
-                        //   }
-                        matriz.arestas(vertice1, vertice2);
+                            matriz.arestas(vertice1, vertice2);
+                        }
+                        catch (System.FormatException)
+                        {
+                            Console.WriteLine("\n\n Formato Inválido!!");
+                            Console.WriteLine("\n Pressione enter para continuar");
+                            Console.ReadKey();
+                        }
 
                         break;
 
@@ -125,13 +127,20 @@ namespace grafo
                         Console.Clear();
                         Console.WriteLine(" Digite as vertices que terão arestas removidas");
                         Console.WriteLine(" ==============================================");
-                        Console.Write("\n\n Vertice 1 : ");
-                        int verticeRemover1 = int.Parse(Console.ReadLine());
-                        Console.Write("\n\n Vertice 2 : ");
-                        int verticeRemover2 = int.Parse(Console.ReadLine());
-
-
-                        matriz.removerAresstas(verticeRemover1, verticeRemover2);
+                        try
+                        {
+                            Console.Write("\n\n Vertice 1 : ");
+                            int verticeRemover1 = int.Parse(Console.ReadLine());
+                            Console.Write("\n\n Vertice 2 : ");
+                            int verticeRemover2 = int.Parse(Console.ReadLine());
+                            matriz.removerAresstas(verticeRemover1, verticeRemover2);
+                        }
+                        catch (System.FormatException)
+                        {
+                            Console.WriteLine("\n\n Formato Inválido!!");
+                            Console.WriteLine("\n Pressione enter para continuar");
+                            Console.ReadKey();
+                        }
 
                         break;
 
@@ -154,14 +163,14 @@ namespace grafo
                         Console.Write(" Essa opcão irá criar um novo grafo de acordo com os parametros passados no arquivo txt.\n\n Pressione S para continuar ou N para cancelar: ");
                         string escolha = Console.ReadLine();
 
-                         if (escolha.ToUpper() == "N")
-                         {
-                             break;
-                         }
-                         if(escolha.ToUpper()=="S")
-                         {
+                        if (escolha.ToUpper() == "N")
+                        {
+                            break;
+                        }
+                        if (escolha.ToUpper() == "S")
+                        {
                             cont++;
-                            string path = Path.Combine(Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location), @"hhhh.txt");
+                            string path = Path.Combine(Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location), @"in.txt");
                             string text = System.IO.File.ReadAllText(path);
                             string[] lines = text.Split('\n');
                             string[] aux = new string[lines.Length];
@@ -170,23 +179,26 @@ namespace grafo
                             matriz.grafo(tamanho);
 
 
-                            for (int i =0;i<lines.Length-3; i++)
+                            for (int i = 0; i < lines.Length - 3; i++)
                             {
-                                aux[i] = lines[i+1];
+                                aux[i] = lines[i + 1];
                                 string[] x = aux[i].Split(';');
                                 matriz.arestas(Convert.ToInt32(x[0]), Convert.ToInt32(x[1]));
 
                             }
-
+                            Console.Clear();
+                            Console.WriteLine("Matriz alterada com Sucesso!!");
+                            Console.WriteLine("Pressione Enter para voltar ao menu principal.");
+                            Console.ReadKey();
                         }
 
                         else
                         {
                             Console.Clear();
                             Console.WriteLine("Opção Inválida!!!");
+                            Console.WriteLine("Pressione Enter para voltar ao menu principal.");
+                            Console.ReadKey();
                         }
-
-                        Console.ReadKey();
 
                         break;
 

@@ -1,6 +1,7 @@
-C:\Users\depau\Desktop\Softwares\grafo\grafo\bin\Debug\hhhh.txt
 C:\Users\depau\Desktop\Softwares\grafo\grafo\bin\Debug\grafo.exe.config
 C:\Users\depau\Desktop\Softwares\grafo\grafo\bin\Debug\grafo.exe
 C:\Users\depau\Desktop\Softwares\grafo\grafo\bin\Debug\grafo.pdb
 C:\Users\depau\Desktop\Softwares\grafo\grafo\obj\Debug\grafo.exe
 C:\Users\depau\Desktop\Softwares\grafo\grafo\obj\Debug\grafo.pdb
+C:\Users\depau\Desktop\Softwares\grafo\grafo\obj\Debug\grafo.csprojResolveAssemblyReference.cache
+C:\Users\depau\Desktop\Softwares\grafo\grafo\bin\Debug\in.txt
